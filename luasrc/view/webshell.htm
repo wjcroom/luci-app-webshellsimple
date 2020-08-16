@@ -43,7 +43,9 @@
 		//obj.value += "[" + pathstr + "] # " + cmdstr + "\r\n";
 
 		iwxhr.post('<%=luci.dispatcher.build_url("admin", "services", "cmd_run")%>', { cmd: cmdstr, path: pathstr },
-			function (x, ifc) {
+			 function ( ifc) {                                                                               
+                               ifc=  eval ("(" +  ifc.responseText + ")") ;                                             
+                           //     alert(ifc['path']);      
 				var curpath = (pathstr == "") ? ifc['path'].replace(/[\r\n]/g, "") : pathstr;
 				obj.value += "[" + curpath + "] # " + cmdstr + "\r\n";
 
